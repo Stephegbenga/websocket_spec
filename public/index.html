@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket2</title>
+</head>
+<body>
+    <div id="test"></div>
+<script>
+    var queryParams = new URLSearchParams(window.location.search);
+
+    var symbol = queryParams.get("symbol"); // return john
+   
+    const ws = new WebSocket(`ws://172.105.37.134:1000?symbol=${symbol}`)
+    document.getElementById('test').innerHTML = "Loading.....";    
+    ws.onmessage = (msg) => {
+        document.getElementById('test').innerHTML = msg.data;
+    }
+</script>
+</body>
+</html>
